@@ -1,19 +1,6 @@
 import { Dispatch } from "@reduxjs/toolkit";
-import { setData } from "./slices/countries";
 import { setFavorites } from "./slices/favorites";
 import { Country } from "./types";
-
-export function fetchData() {
-	return async (dispatch: Dispatch) => {
-		try {
-			const response = await fetch("https://restcountries.com/v2/all");
-			const data = await response.json();
-			dispatch(setData(data));
-		} catch (error) {
-			console.log(error);
-		}
-	};
-}
 
 export function getFavsFromStorage() {
 	return (dispatch: Dispatch) => {
