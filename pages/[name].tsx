@@ -11,9 +11,7 @@ import CountryCard from "../components/countryCard";
 export default function Detail() {
 	const router = useRouter();
 	const { name } = router.query;
-	console.log(typeof name);
 	const [error, country] = useCountry(name as string); // Believe me typescript, I know what I do, don't I?
-	console.log(country);
 	return (
 		<Layout>
 			<Paper className="country-page" elevation={0}>

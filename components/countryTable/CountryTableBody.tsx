@@ -12,7 +12,6 @@ type TBodyPropType = {
 };
 
 export default function CountryTableBody({ countries }: TBodyPropType) {
-	console.log(countries);
 	const favorites = useSelector((state: InitialState) => state.favorites);
 	const filterWord = useSelector(
 		(state: InitialState) => state.countries.filterWord
@@ -30,7 +29,7 @@ export default function CountryTableBody({ countries }: TBodyPropType) {
 
 	useEffect(() => {
 		dispatch(getFavsFromStorage());
-	}, []);
+	}, [dispatch]);
 	return (
 		<>
 			{data.length > 0 ? (
