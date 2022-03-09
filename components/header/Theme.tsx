@@ -3,16 +3,16 @@ import { useTheme } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import DarkModeTwoTone from "@mui/icons-material/DarkModeTwoTone";
 import LightModeTwoTone from "@mui/icons-material/LightModeTwoTone";
-
-import { ThemeContext } from "../layout";
+import { useDispatch } from "react-redux";
+import { toggleMode } from "../../redux/slices/ui";
 
 export default function Theme() {
 	const theme = useTheme();
-	const colorMode = useContext(ThemeContext);
+	const dispatch = useDispatch();
 
 	return (
 		<IconButton
-			onClick={colorMode.toggleColorMode}
+			onClick={() => dispatch(toggleMode())}
 			color="inherit"
 			aria-label="toggle-dark-mode"
 		>

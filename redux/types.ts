@@ -1,5 +1,6 @@
 import { CountriesStateType } from "./slices/countries";
 import { FavsStateType } from "./slices/favorites";
+import { uiStateType } from "./slices/ui";
 
 type Currency = {
 	name: string;
@@ -25,4 +26,5 @@ export type Country = {
 export type InitialState = {
 	countries: CountriesStateType;
 	favorites: FavsStateType;
+	ui: uiStateType;
 };

@@ -3,38 +3,17 @@ import { createTheme, PaletteMode, ThemeProvider } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Header from "../header";
 import Footer from "../footer";
-
-export const ThemeContext = createContext({ toggleColorMode: () => {} });
+import { useDispatch, useSelector } from "react-redux";
+import { getModeFromStorage } from "../../redux/slices/ui";
+import { InitialState } from "../../redux/types";
 
 export default function Layout({ children }) {
-	const [mode, setMode] = useState<PaletteMode>("light");
+	const mode = useSelector((state: InitialState) => state.ui.mode);
+	const dispatch = useDispatch();
 
 	useEffect(() => {
-		const themeInStr = localStorage.getItem("theme");
-		if (themeInStr) {
-			setMode(JSON.parse(themeInStr));
-		} else {
-			localStorage.setItem("theme", JSON.stringify("light"));
-			setMode("light");
-		}
-	}, [setMode]);
-
-	const colorMode = useMemo(
-		() => ({
-			toggleColorMode: () => {
-				setMode((prevMode) => {
-					if (prevMode === "light") {
-						localStorage.setItem("theme", JSON.stringify("dark"));
-						return "dark";
-					} else {
-						localStorage.setItem("theme", JSON.stringify("light"));
-						return "light";
-					}
-				});
-			},
-		}),
-		[]
-	);
+		dispatch(getModeFromStorage());
+	}, [dispatch]);
 
 	const theme = createTheme({
 		palette: {
@@ -43,16 +22,14 @@ export default function Layout({ children }) {
 	});
 
 	return (
-		<ThemeContext.Provider value={colorMode}>
-			<ThemeProvider theme={theme}>
-				<Paper className="App" elevation={0}>
-					<Paper className="App__content" elevation={0}>
-						<Header></Header>
-						{children}
-						<Footer></Footer>
-					</Paper>
+		<ThemeProvider theme={theme}>
+			<Paper className="App" elevation={0}>
+				<Paper className="App__content" elevation={0}>
+					<Header></Header>
+					{children}
+					<Footer></Footer>
 				</Paper>
-			</ThemeProvider>
-		</ThemeContext.Provider>
+			</Paper>
+		</ThemeProvider>
 	);
 }
