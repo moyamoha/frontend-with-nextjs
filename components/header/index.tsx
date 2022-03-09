@@ -14,7 +14,7 @@ export default function Index() {
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const navigateBackToHome = useCallback(() => {
-		router.push("/home");
+		router.push("/");
 		dispatch(showAll());
 	}, [dispatch, router]);
 

@@ -6,7 +6,7 @@ export default function BackButton() {
 	return (
 		<Button
 			variant="contained"
-			onClick={() => router.push("/home")}
+			onClick={() => router.push("/")}
 			sx={{ mt: 1, width: "100%" }}
 			size="large"
 			color="success"
