@@ -8,15 +8,13 @@ import IconButton from "@mui/material/IconButton";
 
 import Favorites from "./Favorites";
 import Theme from "./Theme";
-import { showAll } from "../../redux/slices/favorites";
 
 export default function Index() {
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const navigateBackToHome = useCallback(() => {
 		router.push("/");
-		dispatch(showAll());
-	}, [dispatch, router]);
+	}, [router]);
 
 	return (
 		<Paper className="header" elevation={0}>
