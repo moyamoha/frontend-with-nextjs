@@ -37,9 +37,10 @@ export const getModeFromStorage = () => {
 				localStorage.setItem("theme", JSON.stringify("light"));
 				dispatch(setMode("light"));
 			}
+			dispatch(setFirstTimeToFalse());
 		}
 	};
 };
 
-export const { toggleMode, setMode } = uiSlice.actions;
+export const { toggleMode, setMode, setFirstTimeToFalse } = uiSlice.actions;
 export default uiSlice.reducer;
