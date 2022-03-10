@@ -13,7 +13,7 @@ import BackToTop from "../components/backtotop";
 import CountryTableBody from "../components/countryTable/CountryTableBody";
 import CountryTableHead from "../components/countryTable/CountryTableHead";
 
-export default function favorites() {
+export default function FavoriteCountries() {
 	const favorites = useSelector(
 		(state: InitialState) => state.favorites.content
 	);
