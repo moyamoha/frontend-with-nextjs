@@ -12,20 +12,19 @@ type TBodyPropType = {
 };
 
 export default function CountryTableBody({ countries }: TBodyPropType) {
-	const favorites = useSelector((state: InitialState) => state.favorites);
 	const filterWord = useSelector(
 		(state: InitialState) => state.countries.filterWord
 	);
 	const dispatch = useDispatch();
 
 	const data = useMemo(() => {
-		return (favorites.isShowing ? favorites.content : countries).filter(
+		return countries.filter(
 			(c: Country) =>
 				c.name?.includes(filterWord) ||
 				c.region?.includes(filterWord) ||
 				c.capital?.includes(filterWord)
 		);
-	}, [favorites, countries, filterWord]);
+	}, [countries, filterWord]);
 
 	useEffect(() => {
 		dispatch(getFavsFromStorage());
