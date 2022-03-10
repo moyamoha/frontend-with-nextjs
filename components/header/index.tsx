@@ -10,7 +10,6 @@ import Favorites from "./Favorites";
 import Theme from "./Theme";
 
 export default function Index() {
-	const dispatch = useDispatch();
 	const router = useRouter();
 	const navigateBackToHome = useCallback(() => {
 		router.push("/");
